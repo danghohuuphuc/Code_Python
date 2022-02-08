@@ -16,12 +16,25 @@ playerImg = pygame.image.load("robot.png")
 playerX = 370
 playerY = 480
 playerX_change = 0
+playerY_change = 0
+
+# Enemy
+enemyImg = pygame.image.load("alien.png")
+enemyX = 370
+enemyY = 480
+enemyX_change = 0
+
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
+
+def enemy(x, y):
+    screen.blit(enemyImg, (x,y))
+
 # Game Loop
 running = True
+
 while running:
 
     # RGB - red, green, blue
@@ -37,10 +50,27 @@ while running:
             playerX_change = -0.3
         if event.key == pygame.K_RIGHT:
             playerX_change = 0.3
+        if event.key == pygame.K_UP:
+            playerY_change = -0.3
+        if event.key == pygame.K_DOWN:
+            playerY_change = 0.3
     if event.type == pygame.KEYUP:
         if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
             playerX_change = 0
+        if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+            playerY_change = 0
 
     playerX += playerX_change
+    playerY += playerY_change
+
+    if playerX <= 0:
+        playerX = 0
+    elif playerX >= 736:
+        playerX = 736
+    if playerY <= 0:
+        playerY = 0
+    if playerY >= 536:
+        playerY = 536
+
     player(playerX, playerY)
     pygame.display.update()
