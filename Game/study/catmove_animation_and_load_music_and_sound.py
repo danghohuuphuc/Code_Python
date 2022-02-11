@@ -7,7 +7,7 @@ import time
 pygame.init()
 
 # set fps game
-FPS = 144
+FPS = 30
 fpsClock = pygame.time.Clock()
 #khoi tao khung game
 screen = pygame.display.set_mode((800, 600))
@@ -30,7 +30,8 @@ soundObj.stop()
 #load music
 pygame.mixer.music.load("gieoque.mp3")
 pygame.mixer.music.play(-1, 0.0)
-pygame.mixer.music.stop(5)
+# dung de dừng game
+# pygame.mixer.music.stop()
 
 # the main game loop
 while True:
