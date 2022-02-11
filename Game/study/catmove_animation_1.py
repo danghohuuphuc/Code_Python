@@ -51,4 +51,6 @@ while True:
             sys.exit()
 
     pygame.display.update()
+
+    # su dung fsp
     fpsClock.tick(FPS)
