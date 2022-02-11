@@ -1,60 +1,54 @@
-#import library
+# import library
 import pygame, sys
 from pygame.locals import *
 
-# initlizatie the game
+# khoi tao game
 pygame.init()
 
-# đặt tốc độ khung hình và khóa nó
-FPS = 30
+# set fps game
+FPS = 500
 fpsClock = pygame.time.Clock()
-
-# set up the window
-screen = pygame.display.set_mode((400, 300))
-
-# Set caption
+#khoi tao khung game
+screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Animation")
 
-# set color white
 WHITE = (255, 255, 255)
 
-# load image cat
+# load anh cat and move
 catImg = pygame.image.load("cat.png")
-
-# position cat
-catx = 10
-caty = 10
-
-# direction cat
+catX = 10
+catY = 10
 direction = 'right'
 
 # the main game loop
 while True:
-    #set color khung hinh
+
+    # set nen background
     screen.fill(WHITE)
-     
-    # cat move
+
+    #cat move
     if direction == 'right':
-        catx += 5
-        if catx == 280:
+        catX += 5
+        if catX == 735:
             direction = 'down'
     elif direction == 'down':
-        caty += 5
-        if caty == 220:
-            direction = 'left'
+        catY += 50
+        direction = 'left'
     elif direction == 'left':
-        catx -= 5
-        if catx == 10:
+        catX -= 5
+        if catX == 5:
             direction = 'up'
     elif direction == 'up':
-        caty -= 5
-        if caty == 10:
-            direction ='right'
-    screen.blit(catImg, (catx, caty)) 
+        catY += 50
+        direction = 'right'
+    
+
+    # load date cat
+    screen.blit(catImg, (catX, catY))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-    
+
     pygame.display.update()
     fpsClock.tick(FPS)
