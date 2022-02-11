@@ -1,12 +1,13 @@
 # import library
 import pygame, sys
 from pygame.locals import *
+import time
 
 # khoi tao game
 pygame.init()
 
 # set fps game
-FPS = 500
+FPS = 144
 fpsClock = pygame.time.Clock()
 #khoi tao khung game
 screen = pygame.display.set_mode((800, 600))
@@ -19,6 +20,17 @@ catImg = pygame.image.load("cat.png")
 catX = 10
 catY = 10
 direction = 'right'
+
+# Load sound
+soundObj = pygame.mixer.Sound("beeps.wav")
+soundObj.play()
+time.sleep(1)
+soundObj.stop()
+
+#load music
+pygame.mixer.music.load("gieoque.mp3")
+pygame.mixer.music.play(-1, 0.0)
+pygame.mixer.music.stop(5)
 
 # the main game loop
 while True:
